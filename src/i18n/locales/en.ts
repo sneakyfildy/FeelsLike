@@ -28,16 +28,13 @@ const en = {
     heroSubtitle:
       'Pick the one feeling that best matches your day. You can update it anytime before tomorrow.',
     feelingLabel: "Today's feeling",
-    noteLabel: 'Optional note',
     notePlaceholder:
-      'Anything specific about today — dry wind, heavy air, surprising sunshine...',
+      'Optional — anything specific about today: dry wind, heavy air, surprising sunshine...',
     save: "Save Today's Entry",
     saved: '✓ Saved',
     alerts: {
       missingFeelingTitle: 'Pick a feeling',
       missingFeelingMessage: 'Choose how the weather felt today before saving.',
-      savedTitle: 'Saved!',
-      savedMessage: 'Your weather entry for today has been saved.',
     },
   },
   history: {

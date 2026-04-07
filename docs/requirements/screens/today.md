@@ -38,7 +38,7 @@ Make daily logging fast, clear, and editable for the current day.
 ## V1 Interaction Model
 
 To keep the first version fast and low-risk, the screen should use:
-- a single-select “How did it feel?” choice row
+- a single-select "How did it feel?" choice row
 - an optional note field
 - one primary save action
 
@@ -52,6 +52,34 @@ To keep the first version fast and low-risk, the screen should use:
 These can be implemented as pills, emoji chips, or icon buttons. Start simple.
 
 Implementation note: persisted values should remain stable IDs (`cold`, `cool`, `comfortable`, `warm`, `hot`) so labels can be localized in the UI.
+
+---
+
+## FeelingChip Interaction Model
+
+Each feeling option is rendered as a `FeelingChip` pill. The chip supports two distinct gestures with different outcomes:
+
+### Single tap
+- Selects the feeling (highlights the chip with a blue background).
+- Marks the form as having unsaved changes.
+- The user still needs to press the sticky **Save** button at the bottom to persist.
+
+### Long press (hold ≥ 1300 ms)
+- An animated green fill sweeps across the chip from left to right over the full hold duration, giving real-time visual feedback on progress.
+- When the fill reaches 100%, the chip is selected **and the entry is saved immediately** — no need to tap the Save button.
+- If the user releases before the fill completes, the animation is cancelled and the fill fades back quickly (~120 ms); no selection or save occurs.
+- After a successful long-press save, the fill fades out slowly (~350 ms) before the chip transitions to the selected (blue) style.
+
+### Animation details
+- **Fill animation:** `Animated.timing`, width `'0%' → '100%'`, duration `1300 ms`, easing `Easing.in(Easing.ease)` — starts slowly then accelerates, intentionally subtle so it doesn't feel mechanical.
+- **Dismiss animation (early release):** `120 ms` linear fade-back.
+- **Dismiss animation (post-save):** `350 ms` linear fade-back before chip turns blue.
+- `useNativeDriver: false` is required because the animated property is `width` (a layout property).
+
+### Implementation notes
+- The fill is an absolutely-positioned `Animated.View` behind the chip label, hidden when the chip is already selected.
+- A `longPressTriggered` ref guards against the `onPress` handler firing a second selection after a long-press save has already completed.
+- Action is driven by the animation's `finished` callback rather than a separate `setTimeout`, keeping gesture logic and visual state in sync.
 
 ---
 
