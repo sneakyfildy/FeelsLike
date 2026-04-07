@@ -18,6 +18,12 @@
   - `docs/requirements-changelog.md` stores dated changes
 - Added a dedicated screen spec file:
   - `docs/requirements/screens/today.md` stores detailed `TodayScreen` requirements
+- Added app localization context:
+  - `expo-localization` + `i18next` + `react-i18next`
+  - English default / fallback
+  - Spanish locale resources prepared
+  - persisted language override via AsyncStorage
+  - shared header language selector
 
 ### Decision
 - Use Markdown files to track requirements and requirement changes for now.
@@ -25,6 +31,7 @@
   - app-level summary in `REQUIREMENTS.md`
   - screen-level detail in `docs/requirements/screens/`
   - dated history in `docs/requirements-changelog.md`
+- Keep i18n architecture documented in-repo so future UI work preserves translation keys, locale-aware dates, and language-neutral stored values.
 
 ### Why
 - The project is small and evolving quickly.
@@ -35,4 +42,5 @@
 - `TodayScreen` can now move from placeholder UI toward a concrete V1 interaction model.
 - `WeatherEntry` will likely need one new required or semi-structured field for the primary daily feeling in the next implementation step.
 - Screen-specific product work can expand without turning `REQUIREMENTS.md` into one long file.
+- Localization work now has explicit context: where language is resolved, where locale resources live, and how language selection is persisted.
 

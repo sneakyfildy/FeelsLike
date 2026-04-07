@@ -13,6 +13,19 @@ export const WEATHER_FEELINGS = [
 
 export type WeatherFeeling = (typeof WEATHER_FEELINGS)[number];
 
+/**
+ * Maps every feeling ID to its explicit i18n translation key.
+ * Use this instead of dynamic template literals like t(`feelings.${id}`)
+ * so static analysis can verify all keys exist.
+ */
+export const FEELING_TRANSLATION_KEYS = {
+  cold:        'feelings.cold',
+  cool:        'feelings.cool',
+  comfortable: 'feelings.comfortable',
+  warm:        'feelings.warm',
+  hot:         'feelings.hot',
+} as const satisfies Record<WeatherFeeling, string>;
+
 export interface WeatherEntry {
   /** ISO date string, e.g. "2026-04-07" — used as the unique key per day */
   date: string;

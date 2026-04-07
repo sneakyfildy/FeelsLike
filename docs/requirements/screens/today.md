@@ -10,6 +10,7 @@ Related files:
 - UI: [`src/screens/TodayScreen.tsx`](../../../src/screens/TodayScreen.tsx)
 - Data model: [`src/types/weather.ts`](../../../src/types/weather.ts)
 - Storage: [`src/storage/weatherStorage.ts`](../../../src/storage/weatherStorage.ts)
+- Localization: [`src/i18n/index.ts`](../../../src/i18n/index.ts)
 - App-level requirements: [`REQUIREMENTS.md`](../../../REQUIREMENTS.md)
 - Requirement history: [`docs/requirements-changelog.md`](../../requirements-changelog.md)
 
@@ -50,6 +51,8 @@ To keep the first version fast and low-risk, the screen should use:
 
 These can be implemented as pills, emoji chips, or icon buttons. Start simple.
 
+Implementation note: persisted values should remain stable IDs (`cold`, `cool`, `comfortable`, `warm`, `hot`) so labels can be localized in the UI.
+
 ---
 
 ## Data Expectations
@@ -86,6 +89,11 @@ These can be implemented as pills, emoji chips, or icon buttons. Start simple.
 ### Saved state
 - Confirm that the entry was saved successfully
 - Make it obvious whether the current form is already saved or has unsaved changes
+
+### Localization behavior
+- Visible copy should come from locale resources, not inline strings in the component
+- The date header should use shared locale-aware formatting helpers
+- Feeling labels shown to the user should be translated from stored IDs
 
 ---
 

@@ -15,7 +15,7 @@ import {
 import { useFocusEffect } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
 import { formatLocalizedDate } from '../i18n';
-import { WeatherEntry, WeatherStore } from '../types/weather';
+import { FEELING_TRANSLATION_KEYS, WeatherEntry, WeatherStore } from '../types/weather';
 import { loadAllEntries, deleteEntry } from '../storage/weatherStorage';
 
 export default function HistoryScreen() {
@@ -94,7 +94,7 @@ export default function HistoryScreen() {
 
           <Text style={styles.weatherIndicator}>
             {item.feeling
-              ? t('history.feelingValue', { feeling: t(`feelings.${item.feeling}`) })
+              ? t('history.feelingValue', { feeling: t(FEELING_TRANSLATION_KEYS[item.feeling]) })
               : t('history.feelingMissing')}
           </Text>
 

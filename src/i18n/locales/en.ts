@@ -8,6 +8,14 @@ const en = {
     cancel: 'Cancel',
     delete: 'Delete',
   },
+  languageSelector: {
+    buttonLabel: 'Change language',
+    title: 'Language',
+  },
+  languages: {
+    en: '🇬🇧 English',
+    es: '🇪🇸 Español',
+  },
   feelings: {
     cold: 'Cold',
     cool: 'Cool',

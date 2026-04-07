@@ -8,6 +8,14 @@ const es = {
     cancel: 'Cancelar',
     delete: 'Eliminar',
   },
+  languageSelector: {
+    buttonLabel: 'Cambiar idioma',
+    title: 'Idioma',
+  },
+  languages: {
+    en: '🇬🇧 English',
+    es: '🇪🇸 Español',
+  },
   feelings: {
     cold: 'Frío',
     cool: 'Fresco',

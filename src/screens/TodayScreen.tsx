@@ -19,7 +19,7 @@ import {
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { formatLocalizedDate } from '../i18n';
-import { WEATHER_FEELINGS, WeatherEntry, WeatherFeeling } from '../types/weather';
+import { FEELING_TRANSLATION_KEYS, WEATHER_FEELINGS, WeatherEntry, WeatherFeeling } from '../types/weather';
 import { loadEntry, saveEntry, todayKey } from '../storage/weatherStorage';
 
 export default function TodayScreen() {
@@ -97,7 +97,7 @@ export default function TodayScreen() {
                 <Text
                   style={[styles.feelingChipText, isSelected && styles.feelingChipTextSelected]}
                 >
-                  {t(`feelings.${option}`)}
+                  {t(FEELING_TRANSLATION_KEYS[option])}
                 </Text>
               </TouchableOpacity>
             );
